@@ -17,6 +17,7 @@ public class RemoveTest {
         //https://www.cnblogs.com/dolphin0520/p/3933551.html
         //1.Arrays.asList("a", "b", "c", "d", "d")执行remove操作会抛UnsupportedOperationException异常，是因为java.util.Arrays$ArrayList中未从
 
+        List<String> strings1 = Arrays.asList("a", "b", "c", "d", "d");
 
         List<String> strings = new ArrayList<>();
         strings.add("a");

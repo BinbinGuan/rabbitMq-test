@@ -1,4 +1,4 @@
-package com.example.java8test.mq;
+package com.example.mq;
 
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;

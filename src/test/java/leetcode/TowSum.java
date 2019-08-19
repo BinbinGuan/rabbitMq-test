@@ -11,6 +11,24 @@ import java.util.Map;
  */
 public class TowSum {
 
+
+    @Test
+    public void  test1(){
+        Boolean a=true;
+        test2(a);
+        if(!a){
+            System.out.println(a);
+        }
+
+    }
+
+
+    private void test2(Boolean a){
+       a=false;
+    }
+
+
+
     @Test
     public void test() {
         //计算两数之和

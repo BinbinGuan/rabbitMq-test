@@ -21,7 +21,6 @@ public class CachedThreadPool {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             cachedThreadPool.execute(new Runnable() {
                 @Override
                 public void run() {

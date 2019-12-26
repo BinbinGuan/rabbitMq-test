@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 'Checkout codes'
-      uses: master
+      uses: actions/checkout@v1
     - name: 'Get Result'
       run: bash ./weather.sh
     - name: 'Send mail'

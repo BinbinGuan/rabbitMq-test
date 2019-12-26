@@ -2,6 +2,8 @@ package com.example.mq;
 
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -15,7 +17,6 @@ public class ConnectionUtils {
     public static Connection getConnection() throws IOException, TimeoutException {
         //连接工厂
         ConnectionFactory factory = new ConnectionFactory();
-
         //服务地址
         factory.setHost("127.0.0.1");
 

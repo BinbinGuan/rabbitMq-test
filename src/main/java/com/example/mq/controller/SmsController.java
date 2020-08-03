@@ -7,15 +7,9 @@ import org.smpp.Data;
 import org.smpp.Session;
 import org.smpp.TCPIPConnection;
 import org.smpp.pdu.*;
-import org.smpp.util.ByteBuffer;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author: GuanBin
@@ -38,13 +32,14 @@ public class SmsController {
                          @RequestParam(name = "sourceAddress", required = false) String sourceAddress,
                          @RequestParam(name = "verifyCode", required = false) String verifyCode
     ) {
-        log.info("start to send sms notification, reciever,host {},port {}, userName {} password {} destinations is {} verifyCode {}", host, port, userName, password, phonenumber, verifyCode);
+        String pass = StringUtils.trim(password);
+        log.info("start to send sms notification, reciever,host {},port {}, userName {} password {} destinations is {} verifyCode {}", host, port, userName, pass, phonenumber, verifyCode);
         try {
             TCPIPConnection connection = new TCPIPConnection(host, Integer.parseInt(port));
             Session session = new Session(connection);
             BindRequest request = new BindTransmitter();
             request.setSystemId(userName);
-            request.setPassword(password);
+            request.setPassword(pass);
             //SMPP protocol version
             request.setInterfaceVersion((byte) 0x34);
             request.setSystemType("SMPP");
@@ -65,8 +60,8 @@ public class SmsController {
         String recipientPhoneNumber = phoneNumber;
 
         SubmitSM request = new SubmitSM();
-        request.setSourceAddr(createAddress(sourceAddress));
-        request.setDestAddr(createAddress(recipientPhoneNumber));
+        request.setSourceAddr(createsSourceAddress(sourceAddress));
+        request.setDestAddr(createsDestinationAddress(recipientPhoneNumber));
         request.setShortMessage(content,Data.ENC_UTF8);
         request.setReplaceIfPresentFlag((byte) 0);
         request.setEsmClass((byte) 0);
@@ -78,12 +73,25 @@ public class SmsController {
         return request;
     }
 
-    private Address createAddress(String address) throws WrongLengthOfStringException {
+    private Address createsSourceAddress(String address) throws WrongLengthOfStringException {
         Address addressInst = new Address();
         // national ton
         addressInst.setTon((byte) 5);
         // numeric plan indicator
         addressInst.setNpi((byte) 0);
+        addressInst.setAddress(address, Data.SM_ADDR_LEN);
+        return addressInst;
+    }
+
+    private Address createsDestinationAddress(String address) throws WrongLengthOfStringException {
+        if(address.startsWith("+")) {
+            address = address.substring(1);
+        }
+        Address addressInst = new Address();
+        // national ton
+        addressInst.setTon((byte) 1);
+        // numeric plan indicator
+        addressInst.setNpi((byte) 1);
         addressInst.setAddress(address, Data.SM_ADDR_LEN);
         return addressInst;
     }

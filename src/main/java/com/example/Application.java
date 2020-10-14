@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+//@EnableSAMLSSO
 @EnableScheduling
 @ImportResource({ "classpath*:spring/*.xml" })
 public class Application extends SpringBootServletInitializer {

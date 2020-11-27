@@ -17,7 +17,7 @@ public class ListUtilsTest {
         List<String> a3 = Arrays.asList("a", "o", "p");
         List<String> a4 = Arrays.asList("");
         List<String> a5 = Arrays.asList("");
-asdfasdf
+
         //两者都有数据，无任何交集
         System.out.println(ListUtils.retainAll(a1,a2));
         //两者都有数据，有交集

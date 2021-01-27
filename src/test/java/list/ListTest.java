@@ -4,6 +4,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author: GuanBin
@@ -44,7 +45,10 @@ public class ListTest {
         });
 
       System.out.println(StringUtils.containsIgnoreCase("server:123456",""));
+        List<String> list = new ArrayList<>();
+        Collections.synchronizedList(list);
 
+        List<String> list1 = new CopyOnWriteArrayList<>();
 
     }
 }

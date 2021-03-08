@@ -11,5 +11,19 @@ public class TestThread2 {
 
         ThreadDemo T2 = new ThreadDemo( "Thread-2");
         T2.start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+            }
+        };
     }
 }

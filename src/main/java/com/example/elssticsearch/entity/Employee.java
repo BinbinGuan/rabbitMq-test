@@ -2,8 +2,10 @@ package com.example.elssticsearch.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serializable;
 
@@ -23,8 +25,11 @@ public class Employee implements Serializable {
     private String lastName;
     @Field
     private Integer age;
-    @Field
+    @Field(type = FieldType.Keyword)
     private String about;
+
+    @Transient
+    private String hightxt;
 
 
 

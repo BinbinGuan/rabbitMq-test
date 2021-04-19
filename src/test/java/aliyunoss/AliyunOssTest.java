@@ -17,9 +17,9 @@ import java.util.List;
 public class AliyunOssTest {
     public static void main(String[] args) throws FileNotFoundException {
         String endpoint = "oss-cn-shanghai.aliyuncs.com";
-        String accessKeyId = "LTAI5t6NEeA34yLdGEDN12Fb";
-        String accessKeySecret = "IBcEfYLmQGaFSOztUB942mLbW9AEP4";
-        String bucketName="guanbin-test";
+        String accessKeyId = "";
+        String accessKeySecret = "";
+        String bucketName="";
 
         uploadFIle(endpoint, accessKeyId, accessKeySecret,bucketName);
 //        deleteFIle(endpoint, accessKeyId, accessKeySecret,bucketName);

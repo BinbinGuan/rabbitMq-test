@@ -16,7 +16,7 @@ public class AopController {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     @ResponseBody
     public String test() {
-        int i = 1 / 0;
+//        int i = 1 / 0;
         System.out.println("haohao");
         return "success";
     }

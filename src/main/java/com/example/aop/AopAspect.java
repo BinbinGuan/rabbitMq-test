@@ -40,13 +40,16 @@ public class AopAspect {
         System.out.println("环绕通知前....");
         Object obj = (Object) joinPoint.proceed();
         System.out.println("环绕通知后....");
+        if (true) {
+            throw new Exception("失败");
+        }
         return obj;
     }
 
     /**
      * 抛出通知
-     * @param e
-     *      
+     *
+     * @param e      
      */
 
     @AfterThrowing(value = "execution(* com.example.aop.AopController.test(..))", throwing = "e")

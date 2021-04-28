@@ -1,6 +1,5 @@
-//package com.example.security.config;
+//package com.example.springsecurity;
 //
-//import com.example.security.MyUser;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.security.core.authority.AuthorityUtils;

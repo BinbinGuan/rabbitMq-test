@@ -96,13 +96,19 @@ public class Test {
 //
 //        }
 
+//
+//        long l = System.currentTimeMillis();
+//        Thread.sleep(100);
+//        long m = System.currentTimeMillis();
+//
+//        float l1 = (float)(m - l) / 1000;
 
-        long l = System.currentTimeMillis();
-        Thread.sleep(100);
-        long m = System.currentTimeMillis();
+        test();
+    }
 
-        float l1 = (float)(m - l) / 1000;
-
-
+    private static void test(){
+        String path="/user/test/123.txt";
+        int i = path.lastIndexOf("/");
+        path.substring(0,i);
     }
 }
